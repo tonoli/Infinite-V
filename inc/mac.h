@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 20:47:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/23 01:02:09 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/25 17:48:32 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define ENDIAN env->endian
 
 # define LOGO env->icon_logo
+# define SELECT env->icon_select
 # define HELP env->icon_help
 # define HELPI env->help
 # define RESET env->icon_reset
@@ -31,6 +32,7 @@
 
 # define WIDTH		1560
 # define HEIGHT		1200
+# define CENTRE		WIDTH/2
 # define MENU_W		60
 
 # define CENTER		(MENU_W / 2) - 16
@@ -63,5 +65,9 @@
 # define GREY		0x757575
 # define BROWN		0x795548
 # define BLACK		0x000000
+
+# define RO	env->red
+# define GR	env->green
+# define BL	env->blue
 
 #endif

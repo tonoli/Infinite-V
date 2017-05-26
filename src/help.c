@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 01:08:23 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/23 01:12:03 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/24 18:43:10 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	closehelp(t_env *env)
 {
 	new_img(env);
+	fractal_init(env->fractal_nbr, env);
 	fill_img(env);
 }
 
@@ -29,16 +30,16 @@ void	openhelp(t_env *env)
 		y = HEIGHT - 300;
 		while (++y < HEIGHT - 50)
 		{
-			mlx_pixel_put(env->mlx, env->win, x, y, WHITE);
+			mlx_pixel_put(env->mlx, env->win, x, y, 0xBCBCBC);
 		}
 	}
-	mlx_string_put(env->mlx, env->win, 1295, 605, BLACK, "X");
-	mlx_string_put(env->mlx, env->win, 1020, 620, GREEN, "HELP MENU");
-	mlx_string_put(env->mlx, env->win, 1020, 650, RED, "Rotation : A & D");
-	mlx_string_put(env->mlx, env->win, 1020, 680, RED,
+	mlx_string_put(env->mlx, env->win, WIDTH - 70, HEIGHT - 295, BLACK, "X");
+	mlx_string_put(env->mlx, env->win, WIDTH - 340, HEIGHT - 280, 0xFF496C, "HELP MENU");
+	mlx_string_put(env->mlx, env->win, WIDTH - 340, HEIGHT - 250, BLACK, "Rotation : A & D");
+	mlx_string_put(env->mlx, env->win, WIDTH - 340, HEIGHT - 220, BLACK,
 		"Deepth : PageUp & PageDown");
-	mlx_string_put(env->mlx, env->win, 1020, 710, RED, "Zoom : + & -");
-	mlx_string_put(env->mlx, env->win, 1020, 740, RED, "Move : Arrows");
-	mlx_string_put(env->mlx, env->win, 1020, 770, RED, "Reset : R");
-	mlx_string_put(env->mlx, env->win, 1230, 820, BLACK, "(c)IT2M");
+	mlx_string_put(env->mlx, env->win, WIDTH - 340, HEIGHT - 190, BLACK, "Zoom : + & -");
+	mlx_string_put(env->mlx, env->win, WIDTH - 340, HEIGHT - 160, BLACK, "Move : Arrows");
+	mlx_string_put(env->mlx, env->win, WIDTH - 340, HEIGHT - 130, BLACK, "Reset : R");
+	mlx_string_put(env->mlx, env->win, WIDTH - 140, HEIGHT - 80, 0xFF496C, "(c)IT2M");
 }

@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 23:46:06 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/23 00:18:43 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/24 01:54:56 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	buddhabrot_loop(t_fract *fract, t_env *env, t_poss poss)
 		fract->zi = 2 * fract->zi * tmp + fract->ci;
 	}
 	if (fract->iter != env->iter_max)
-		DATA[poss.x * WIDTH + poss.y] = 255 * fract->iter / env->iter_max;
+		ft_write_data(env, fract, poss.x, poss.y);
 }
 
 void	ft_buddhabrot(t_env *env, t_fract *fract)

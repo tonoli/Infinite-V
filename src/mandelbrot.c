@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 22:26:45 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/23 00:45:55 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/25 18:20:32 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	mandelbrot_loop(t_fract *fract, t_env *env, t_poss poss)
 		fract->zi = 2 * fract->zi * tmp + fract->ci;
 	}
 	if (fract->iter != env->iter_max)
-		DATA[poss.x * WIDTH + poss.y] = 255 * fract->iter / env->iter_max;
+		ft_write_data(env, fract, poss.x, poss.y);
 }
 
 void	ft_mandelbrot(t_env *env, t_fract *fract)
@@ -41,19 +41,17 @@ void	ft_mandelbrot(t_env *env, t_fract *fract)
 	t_poss poss;
 
 	mandelbrot_init(fract);
-	fract->zoomr = WIDTH / (fract->x2 - fract->x1);
-	fract->zoomi = HEIGHT / (fract->y2 - fract->y1);
-	poss.x = -1;
+	poss.y = -1;
 	env->iter_max = 50;
-	while (++poss.x < HEIGHT)
+	while (++poss.y < WIDTH)
 	{
-		poss.y = -1;
-		while (++poss.y < WIDTH)
+		poss.x = -1;
+		while (++poss.x < HEIGHT)
 		{
-			fract->cr = poss.y / fract->zoomr + fract->x1;
-			fract->ci = poss.x / fract->zoomi + fract->y1;
-			fract->zr = 0;
-			fract->zi = 0;
+			fract->cr = 1.5 * (poss.y - WIDTH / 2) / (0.5 * env->zoom * WIDTH) + env->move_h - 0.6;
+			fract->ci = (poss.x - HEIGHT / 2) / (0.5 * env->zoom * HEIGHT) + env->move_v;
+			fract->zr = 0 + env->real;
+			fract->zi = 0 + env->ireal;
 			mandelbrot_loop(fract, env, poss);
 		}
 	}
