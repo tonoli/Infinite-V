@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:09:04 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 18:17:15 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 01:59:37 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ typedef struct		s_env
 	double	move_v;
 	double	move_h;
 	double	zoom;
+	double	zoomx;
+	double	zoomy;
 	double	z;
 	double	rot;
 	double	real;
@@ -110,7 +112,9 @@ typedef struct		s_env
 void	fractal_init(int map, t_env *env);
 void	ft_mandelbrot(t_env *env, t_fract *fract);
 void	ft_julia(t_env *env, t_fract *fract);
+void	ft_brunship(t_env *env, t_fract *fract);
 void	ft_buddhabrot(t_env *env, t_fract *fract);
+void	ft_newton(t_env *env, t_fract *fract);
 void	initenv(t_env *env);
 void	draw_menu(t_env *env);
 void	new_menu(t_env *env);
@@ -127,5 +131,9 @@ int 	fractal_number(char *argv);
 void	ft_error(int i);
 void	ft_write_data(t_env *env, t_fract *fract, int x, int y);
 char	*ft_name(t_env *env);
+void	ft_sierpinski(t_env *env, t_fract *fract);
+void	ft_rabbit(t_env *env, t_fract *fract);
+void	ft_julpower(t_env *env, t_fract *fract);
+void	ft_random(t_env *env, t_fract *fract);
 
 #endif

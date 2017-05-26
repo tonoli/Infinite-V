@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:57:35 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 18:33:33 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/25 21:51:30 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	initenv(t_env *env)
 	env->ptr_img = mlx_new_image(env->mlx, WIDTH, HEIGHT);
 	env->img_data = (int *)mlx_get_data_addr(env->ptr_img, &env->bpp,
 		&env->size_line, &env->endian);
-	env->iter_max = 500;
+	env->iter_max = 50;
 	env->zoom = 1;
 	env->psy = 25;
 	env->real = 0;
@@ -32,5 +32,7 @@ void	initenv(t_env *env)
 	env->red = 242;
 	env->green = 15;
 	env->blue = 32;
+	env->zoomx = 0;
+	env->zoomy = 0;
 	new_menu(env);
 }

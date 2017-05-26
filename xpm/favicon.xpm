@@ -2,8 +2,8 @@
 static char *favicon_32x32[] = {
 /* columns rows colors chars-per-pixel */
 "32 32 3 1 ",
-"  c #070707",
-". c gray3",
+"  c #F44336",
+". c #F44336",
 "X c None",
 /* pixels */
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   rabbit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/22 22:28:13 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/26 01:48:45 by itonoli-         ###   ########.fr       */
+/*   Created: 2017/05/26 01:41:10 by itonoli-          #+#    #+#             */
+/*   Updated: 2017/05/26 01:47:37 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-void	julia_loop(t_fract *fract, t_env *env, t_poss poss)
+void	rabbit_loop(t_fract *fract, t_env *env, t_poss poss)
 {
 	double tmp;
 
@@ -25,12 +25,12 @@ void	julia_loop(t_fract *fract, t_env *env, t_poss poss)
 		fract->zi = 2 * fract->zi * tmp + fract->ci;
 	}
 	if (fract->iter != env->iter_max)
-		ft_write_data(env, fract, poss.x, poss.y);
+		ft_write_data(env, env->fract, poss.x, poss.y);
 	if (fract->iter == env->iter_max)
 		DATA[poss.x * WIDTH + poss.y] = 0x151515;
 }
 
-void	ft_julia(t_env *env, t_fract *fract)
+void	ft_rabbit(t_env *env, t_fract *fract)
 {
 	t_poss poss;
 
@@ -40,11 +40,11 @@ void	ft_julia(t_env *env, t_fract *fract)
 		poss.y = -1;
 		while (++poss.y < WIDTH)
 		{
-			fract->cr = 0.285 + env->real;
-			fract->ci = 0.01 + env->ireal;
+			fract->cr = -0.123;
+			fract->ci = 0.745;
 			fract->zr = 1.5 * (poss.y + env->zoomy - WIDTH * 0.5) / (env->zoom * WIDTH * 0.5) + env->move_h;
 			fract->zi = (poss.x + env->zoomx - HEIGHT * 0.5) / (env->zoom * HEIGHT * 0.5) + env->move_v;
-			julia_loop(fract, env, poss);
+			rabbit_loop(fract, env, poss);
 		}
 	}
 }

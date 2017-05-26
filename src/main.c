@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 16:57:54 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 15:30:54 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 01:59:42 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,18 @@ void	fractal_init(int map, t_env *env)
 		ft_julia(env, env->fract);
 	else if (map == 2)
 		ft_mandelbrot(env, env->fract);
-/*	else if (map == 2)
-		ft_burnship(env, env->fract);
-	else if (map == 3)
-		ft_buddhabrot(env, env->fract)
-*/
-
+	else if (map ==  3)
+		ft_newton(env, env->fract);
+	else if (map == 4)
+		ft_brunship(env, env->fract);
+	else if (map == 5)
+		ft_sierpinski(env, env->fract);
+	else if (map == 6)
+		ft_rabbit(env, env->fract);
+	else if (map == 7)
+		ft_julpower(env, env->fract);
+	else if (map == 8)
+		ft_random(env, env->fract);
 }
 int		main(int argc, char **argv)
 {

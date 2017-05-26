@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 00:06:37 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 17:48:26 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 02:03:12 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 char 	*ft_name(t_env *env)
 {
 	if (env->fractal_nbr == 1)
-		return ("Julia");
+		return ("Julia Fractal");
 	if (env->fractal_nbr == 2)
-		return ("Mandelbrot");
-	/*name = (env->fractal_nbr == 2) ? ("Mandelbrot") : NULL;
-	name = (env->fractal_nbr == 3) ? ("Buddhabrot") : NULL;
-	name = (env->fractal_nbr == 4) ? ("Burnship") : NULL;
-	name = (env->fractal_nbr == 5) ? ("Dragon") : NULL;
-	name = (env->fractal_nbr == 6) ? ("Fibonacci") : NULL;
-	name = (env->fractal_nbr == 7) ? ("Douady") : NULL;
-	name = (env->fractal_nbr == 8) ? ("Newton") : NULL;
-	*/
+		return ("Mandelbrot Fractal");
+	if (env->fractal_nbr == 3)
+		return ("Newton Fractal");
+	if (env->fractal_nbr == 4)
+		return ("Burnship Fractal");
+	if (env->fractal_nbr == 5)
+		return ("Sierpinski Fractal");
+	if (env->fractal_nbr == 6)
+		return ("Douady's Rabbit Fractal");
+	if (env->fractal_nbr == 7)
+		return ("Power Julia Fractal");
+	if (env->fractal_nbr == 8)
+		return ("Random Fractal");
 	return (0) ;
 }
 
@@ -36,7 +40,7 @@ void	files_menu(t_env *env)
 	int len;
 
 	c = 70;
-	name = ft_memalloc(sizeof(char) * 15);
+	name = ft_memalloc(sizeof(char) * 25);
 	name = ft_name(env);
 	len = ft_strlen(name);
 	len *= 10;

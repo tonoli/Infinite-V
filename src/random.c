@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   random.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/22 22:28:13 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/26 01:48:45 by itonoli-         ###   ########.fr       */
+/*   Created: 2017/05/26 02:00:08 by itonoli-          #+#    #+#             */
+/*   Updated: 2017/05/26 02:02:09 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-void	julia_loop(t_fract *fract, t_env *env, t_poss poss)
+void	random_loop(t_fract *fract, t_env *env, t_poss poss)
 {
 	double tmp;
 
@@ -30,7 +30,7 @@ void	julia_loop(t_fract *fract, t_env *env, t_poss poss)
 		DATA[poss.x * WIDTH + poss.y] = 0x151515;
 }
 
-void	ft_julia(t_env *env, t_fract *fract)
+void	ft_random(t_env *env, t_fract *fract)
 {
 	t_poss poss;
 
@@ -40,11 +40,11 @@ void	ft_julia(t_env *env, t_fract *fract)
 		poss.y = -1;
 		while (++poss.y < WIDTH)
 		{
-			fract->cr = 0.285 + env->real;
-			fract->ci = 0.01 + env->ireal;
+			fract->cr = -1.5;
+			fract->ci = 0;
 			fract->zr = 1.5 * (poss.y + env->zoomy - WIDTH * 0.5) / (env->zoom * WIDTH * 0.5) + env->move_h;
 			fract->zi = (poss.x + env->zoomx - HEIGHT * 0.5) / (env->zoom * HEIGHT * 0.5) + env->move_v;
-			julia_loop(fract, env, poss);
+			random_loop(fract, env, poss);
 		}
 	}
 }

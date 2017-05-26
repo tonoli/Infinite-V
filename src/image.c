@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 00:02:44 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 17:00:49 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 01:31:20 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ void	ft_write_data(t_env *env, t_fract *fract, int x, int y)
 	int     color;
 	if (x < 0 || x >= HEIGHT || y  < 0 || y >= WIDTH)
 		return ;
-	color = ft_color(0, (RO * fract->iter) / env->iter_max,
-	(GR * fract->iter) / env->iter_max, (BL * fract->iter) / env->iter_max);
+	color = (env->fractal_nbr != 5) ? color = ft_color(0, (RO *
+		fract->iter) / env->iter_max, (GR * fract->iter) / env->iter_max,
+		(BL * fract->iter) / env->iter_max) : ft_color (0, 245, 15, 32);
+
 	if (fract->iter == -1)
 		color = 0;
 	*(int*)&DATA[(x * WIDTH + y)] = color + env->psy;

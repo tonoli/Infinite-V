@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 20:34:51 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 18:38:55 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 02:04:08 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_setcolor(int key, t_env *env)
 		env->psy = (key == A || key == 1) ? env->psy * 25 : env->psy / 25;
 	fractal_init(env->fractal_nbr, env);
 	fill_img(env);
-	ft_putendl("COLOR_KEY");
 }
 
 void	ft_move(int key, t_env *env)
@@ -57,11 +56,13 @@ void	ft_reset(t_env *env)
 	env->zoom = 1;
 	env->psy = 25;
 	env->rot = 0;
+	env->zoomx = 0;
+	env->zoomy = 0;
 	fractal_init(env->fractal_nbr, env);
 	fill_img(env);
 }
 
-void	ft_random(t_env *env)
+void	ft_random_color(t_env *env)
 {
 	new_img(env);
 	env->red = rand() % 256;
@@ -74,7 +75,7 @@ void	ft_random(t_env *env)
 void	ft_switch(t_env *env)
 {
 	new_img(env);
-	if (env->fractal_nbr == 2)
+	if (env->fractal_nbr == 8)
 		env->fractal_nbr = 1;
 	else
 		env->fractal_nbr++;
@@ -85,29 +86,53 @@ void	ft_switch(t_env *env)
 void	ft_zoom(int key, t_env *env)
 {
 	new_img(env);
+	if (env->zoom < 1)
+		env->zoom += (key == 1 || key == PLUS) ? 0.5 : 0;
 	env->zoom += (key == 1 || key == PLUS) ? 0.5 : -0.5;
+	fractal_init(env->fractal_nbr, env);
+	fill_img(env);
+}
+
+void	ft_zoomi (int bouton, t_env *env)
+{
+	new_img(env);
+	if (bouton == 5)
+{
+
+	env->iter_max += 2;
+	env->zoom *= 1.1;
+//	printf("x : %d \n", env->mouse_x);
+//	printf("y : %d \n", env->mouse_y);
+	env->zoomx += (env->mouse_x)* 1.05 / 11;
+	env->zoomy += (env->mouse_y)* 1.05 / 11;
+}
+if (bouton == 4 && env->zoom > 0)
+{
+	env->iter_max -= 2;
+	env->zoom /= 1.1;
+	env->zoomx -= (env->mouse_x / 11) / 1.1;
+	env->zoomy -= (env->mouse_y / 11) / 1.1;
+}
 	fractal_init(env->fractal_nbr, env);
 	fill_img(env);
 }
 
 int		mouse_hook(int bouton, int x, int y, t_env *env)
 {
+	if (env->select == 1 && ((bouton == 5) || (bouton == 4)) && x > 60 && x < WIDTH && y > 47 && y < HEIGHT)
+		ft_zoomi(bouton, env);
 	if (env->select == 0 && (bouton == 1) && x > 60 && x < WIDTH && y > 47 && y < HEIGHT)
 		ft_select(env);
 	if (bouton == 1 && x >= CENTER && x <= CENTER + 32 && y >= 60 && y <= 92)
 		ft_select(env);
 	if (bouton == 1 && x >= CENTER && x <= CENTER + 32 && y >= 118 && y <= 150)
 		ft_reset(env);
-	if (bouton == 1 && x >= CENTER && x <= CENTER + 32 && y >= 176 && y <= 206)
-		ft_setcolor(bouton, env);
-	if (bouton == 2 && x >= CENTER && x <= CENTER + 32 && y >= 176 && y <= 206)
+	if (((bouton == 1) || (bouton == 2)) && x >= CENTER && x <= CENTER + 32 && y >= 176 && y <= 206)
 		ft_setcolor(bouton, env);
 	if (bouton == 1 && x >= CENTER && x <= CENTER + 32 && y >= 234 && y <= 266)
-		ft_random(env);
-	if (bouton == 1 && x >= CENTER && x <= CENTER + 32 && y >= 292 && y <= 324)
-		ft_zoom(1, env);
-	if (bouton == 2 && x >= CENTER && x <= CENTER + 32 && y >= 292 && y <= 324)
-		ft_zoom(2, env);
+		ft_random_color(env);
+	if (((bouton == 1) || (bouton == 2)) && x >= CENTER && x <= CENTER + 32 && y >= 292 && y <= 324)
+		ft_zoom(bouton, env);
 	if (bouton == 1 && x >= CENTER && x <= CENTER + 32 && y >= HEIGHT - 50 && y <= HEIGHT - 50 + 32)
 		openhelp(env);
 	if (bouton == 1 && x >= WIDTH - 70 && x <= WIDTH - 60 && y >= HEIGHT - 295 && y <= HEIGHT - 275)
@@ -138,15 +163,12 @@ int		mouse_move(int x, int y, t_env *env)
 {
 	env->mouse_x = x;
 	env->mouse_y = y;
-	printf("%s%d%s", "x :",env->mouse_x, "\n");
-	printf("%s%d%s","y :", env->mouse_y, "\n");
 	if (env->select == 0)
 	{
 		new_img(env);
 		if (x < 60 || x > WIDTH || y < 47 || y > HEIGHT)
 			return (0);
-		env->real = (((float)x - 800) / WIDTH) * 2;
-		printf("%s%f%s", "x :",env->real, "\n");
+		env->real = (((float)x - 800) / WIDTH) * 2;;
 		env->ireal = (((float)y - 800) / HEIGHT) * 2;
 		fractal_init(env->fractal_nbr, env);
 		fill_img(env);
