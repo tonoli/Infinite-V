@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 00:02:44 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/26 15:16:03 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 19:34:21 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	fill_img(t_env *env)
 {
 	draw_menu(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->ptr_menu, 0, 0);
-	put_xmp(env);
+	put_xpm(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->ptr_img, MENU_W, 47);
 }
 
