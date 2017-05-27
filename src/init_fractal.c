@@ -6,11 +6,11 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:57:35 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 21:51:30 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 15:22:29 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../inc/fractol.h"
+#include "../inc/fractol.h"
 
 void	initenv(t_env *env)
 {
@@ -20,7 +20,7 @@ void	initenv(t_env *env)
 	env->ptr_img = mlx_new_image(env->mlx, WIDTH, HEIGHT);
 	env->img_data = (int *)mlx_get_data_addr(env->ptr_img, &env->bpp,
 		&env->size_line, &env->endian);
-	env->iter_max = 50;
+	env->iter_max = 100;
 	env->zoom = 1;
 	env->psy = 25;
 	env->real = 0;

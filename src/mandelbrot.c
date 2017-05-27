@@ -6,14 +6,13 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 22:26:45 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 21:33:18 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 19:25:04 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-
-void	mandelbrot_loop(t_fract *fract, t_env *env, t_poss poss)
+static void		mandelbrot_loop(t_fract *fract, t_env *env, t_poss poss)
 {
 	double tmp;
 
@@ -27,9 +26,11 @@ void	mandelbrot_loop(t_fract *fract, t_env *env, t_poss poss)
 	}
 	if (fract->iter != env->iter_max)
 		ft_write_data(env, fract, poss.x, poss.y);
+	else
+		DATA[poss.x * WIDTH + poss.y] = 0x151515;
 }
 
-void	ft_mandelbrot(t_env *env, t_fract *fract)
+void			ft_mandelbrot(t_env *env, t_fract *fract)
 {
 	t_poss poss;
 
@@ -39,8 +40,10 @@ void	ft_mandelbrot(t_env *env, t_fract *fract)
 		poss.x = -1;
 		while (++poss.x < HEIGHT)
 		{
-			fract->cr = 1.5 * (poss.y + env->zoomy - WIDTH / 2) / (0.5 * env->zoom * WIDTH) + env->move_h - 0.6;
-			fract->ci = (poss.x + env->zoomx - HEIGHT / 2) / (0.5 * env->zoom * HEIGHT) + env->move_v;
+			fract->cr = 1.5 * (poss.y + env->zoomy - WIDTH / 2) /
+				(0.5 * env->zoom * WIDTH) + env->move_h - 0.6;
+			fract->ci = (poss.x + env->zoomx - HEIGHT / 2) /
+				(0.5 * env->zoom * HEIGHT) + env->move_v;
 			fract->zr = 0 + env->real;
 			fract->zi = 0 + env->ireal;
 			mandelbrot_loop(fract, env, poss);

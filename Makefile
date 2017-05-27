@@ -6,7 +6,7 @@
 #    By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/21 20:39:42 by itonoli-          #+#    #+#              #
-#    Updated: 2017/05/26 02:02:35 by itonoli-         ###   ########.fr        #
+#    Updated: 2017/05/26 19:21:42 by itonoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SRC_NAME = main.c \
 motion.c \
 julia.c \
 mandelbrot.c \
-buddhabrot.c \
 burnship.c \
 newton.c \
 error.c \
@@ -30,6 +29,8 @@ sierpinski.c \
 rabbit.c \
 power.c \
 random.c \
+zoom.c \
+color.c \
 
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

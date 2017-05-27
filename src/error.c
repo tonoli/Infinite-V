@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 22:59:35 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/26 01:57:36 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 16:45:55 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		kill_program(void)
 {
 	exit(0);
-	return(0);
+	return (0);
 }
 
 void	ft_error(int i)
@@ -23,8 +23,8 @@ void	ft_error(int i)
 	if (i == 0)
 	{
 		ft_puterror("Usage : ./fractol <fractal name> \n -julia \n -mandelbrot \
-		\n -buddhabrot \n -burnship \n -dragon \n -fibonacci \n -douady \
-		\n -newton");
+		\n -newton \n -khilae \n -sierpinski \n -rabbit \n -power \
+		\n -awesome");
 	}
 }
 
@@ -36,7 +36,7 @@ int		fractal_number(char *argv)
 		return (2);
 	else if (ft_strncmp("-newton", argv, 8) == 0)
 		return (3);
-	else if (ft_strncmp("-burnship", argv, 10) == 0)
+	else if (ft_strncmp("-khilae", argv, 8) == 0)
 		return (4);
 	else if (ft_strncmp("-sierpinski", argv, 12) == 0)
 		return (5);
@@ -44,7 +44,7 @@ int		fractal_number(char *argv)
 		return (6);
 	else if (ft_strncmp("-power", argv, 8) == 0)
 		return (7);
-	else if (ft_strncmp("-random", argv, 8) == 0)
-		return (4);
+	else if (ft_strncmp("-awesome", argv, 8) == 0)
+		return (8);
 	return (0);
 }

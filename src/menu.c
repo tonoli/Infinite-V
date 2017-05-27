@@ -6,38 +6,38 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 00:06:37 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/26 02:03:12 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 19:28:06 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-char 	*ft_name(t_env *env)
+static char		*ft_name(t_env *env)
 {
 	if (env->fractal_nbr == 1)
 		return ("Julia Fractal");
-	if (env->fractal_nbr == 2)
+	else if (env->fractal_nbr == 2)
 		return ("Mandelbrot Fractal");
-	if (env->fractal_nbr == 3)
+	else if (env->fractal_nbr == 3)
 		return ("Newton Fractal");
-	if (env->fractal_nbr == 4)
-		return ("Burnship Fractal");
-	if (env->fractal_nbr == 5)
+	else if (env->fractal_nbr == 4)
+		return ("Khilae Fractal");
+	else if (env->fractal_nbr == 5)
 		return ("Sierpinski Fractal");
-	if (env->fractal_nbr == 6)
+	else if (env->fractal_nbr == 6)
 		return ("Douady's Rabbit Fractal");
-	if (env->fractal_nbr == 7)
+	else if (env->fractal_nbr == 7)
 		return ("Power Julia Fractal");
-	if (env->fractal_nbr == 8)
-		return ("Random Fractal");
-	return (0) ;
+	else if (env->fractal_nbr == 8)
+		return ("Awesome Fractal");
+	return (0);
 }
 
-void	files_menu(t_env *env)
+void			files_menu(t_env *env)
 {
-	char *name;
-	int c;
-	int len;
+	char	*name;
+	int		c;
+	int		len;
 
 	c = 70;
 	name = ft_memalloc(sizeof(char) * 25);
@@ -56,7 +56,7 @@ void	files_menu(t_env *env)
 	mlx_string_put(env->mlx, env->win, CENTRE - len / 2, 10, 0xBCBCBC, name);
 }
 
-void	put_xmp(t_env *env)
+void			put_xpm(t_env *env)
 {
 	int width;
 	int height;
@@ -65,7 +65,8 @@ void	put_xmp(t_env *env)
 	c = 58;
 	LOGO = mlx_xpm_file_to_image(env->mlx, "xpm/favicon.xpm", &width, &height);
 	mlx_put_image_to_window(env->mlx, env->win, LOGO, CENTER, 5);
-	SELECT = mlx_xpm_file_to_image(env->mlx, "xpm/selector.xpm", &width, &height);
+	SELECT = mlx_xpm_file_to_image(env->mlx, "xpm/selector.xpm",
+	&width, &height);
 	mlx_put_image_to_window(env->mlx, env->win, SELECT, CENTER, 60);
 	RESET = mlx_xpm_file_to_image(env->mlx, "xpm/reset.xpm", &width, &height);
 	mlx_put_image_to_window(env->mlx, env->win, RESET, CENTER, 60 + c);
@@ -80,7 +81,7 @@ void	put_xmp(t_env *env)
 	files_menu(env);
 }
 
-void	draw_menu(t_env *env)
+void			draw_menu(t_env *env)
 {
 	int x;
 	int y;
@@ -93,16 +94,16 @@ void	draw_menu(t_env *env)
 		{
 			env->menu_data[x * WIDTH + y] = 0x3C3C3C;
 			if ((x < 47 && x > 39) || ((x < 163 && x > 160) && y < 60)
-			|| ((x < 105 && x > 102 && y < 60)) || ((x < 221 && x > 218 && y < 60))
-			|| ((x < 279 && x > 276 && y < 60)) || ((x < 336 && x > 333) && y < 60))
+			|| ((x < 105 && x > 102 && y < 60)) || ((x < 221 && x > 218
+			&& y < 60))
+			|| ((x < 279 && x > 276 && y < 60)) || ((x < 336 && x > 333)
+			&& y < 60))
 				env->menu_data[x * WIDTH + y] = BLACK;
 		}
 	}
 }
 
-
-
-void	new_menu(t_env *env)
+void			new_menu(t_env *env)
 {
 	int	bpp;
 	int	size_line;

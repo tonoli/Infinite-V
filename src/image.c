@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 00:02:44 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/26 01:31:20 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 15:16:03 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	new_img(t_env *env)
 	if (IMG)
 		mlx_destroy_image(MLX, IMG);
 	IMG = mlx_new_image(MLX, WIDTH, HEIGHT);
+	DATA = NULL;
 	DATA = (int*)mlx_get_data_addr(IMG, &BPP, &SL, &ENDIAN);
 }
 
 void	fill_img(t_env *env)
 {
 	draw_menu(env);
-	//printf("Red : %d \n Green : %d \n Blue : %d \n", RO, GR, BL);
 	mlx_put_image_to_window(env->mlx, env->win, env->ptr_menu, 0, 0);
 	put_xmp(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->ptr_img, MENU_W, 47);
@@ -37,14 +37,12 @@ int		ft_color(int a, int r, int g, int b)
 
 void	ft_write_data(t_env *env, t_fract *fract, int x, int y)
 {
-	int     color;
-	if (x < 0 || x >= HEIGHT || y  < 0 || y >= WIDTH)
-		return ;
-	color = (env->fractal_nbr != 5) ? color = ft_color(0, (RO *
-		fract->iter) / env->iter_max, (GR * fract->iter) / env->iter_max,
-		(BL * fract->iter) / env->iter_max) : ft_color (0, 245, 15, 32);
+	int		color;
 
-	if (fract->iter == -1)
-		color = 0;
+	if (x < 0 || x >= HEIGHT || y < 0 || y >= WIDTH)
+		return ;
+	color = (env->fractal_nbr != 5) ? ft_color(0, (RO * fract->iter)
+			/ env->iter_max, (GR * fract->iter) / env->iter_max,
+			(BL * fract->iter) / env->iter_max) : ft_color(0, 245, 15, 32);
 	*(int*)&DATA[(x * WIDTH + y)] = color + env->psy;
 }

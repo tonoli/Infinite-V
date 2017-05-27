@@ -6,12 +6,12 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 20:47:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/25 17:48:32 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 14:59:05 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACROS_H
-# define MACROS_H
+#ifndef MAC_H
+# define MAC_H
 
 # define MLX env->mlx
 # define WIN env->win

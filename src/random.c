@@ -6,13 +6,13 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 02:00:08 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/26 02:02:09 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 19:22:48 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-void	random_loop(t_fract *fract, t_env *env, t_poss poss)
+static void	random_loop(t_fract *fract, t_env *env, t_poss poss)
 {
 	double tmp;
 
@@ -30,7 +30,7 @@ void	random_loop(t_fract *fract, t_env *env, t_poss poss)
 		DATA[poss.x * WIDTH + poss.y] = 0x151515;
 }
 
-void	ft_random(t_env *env, t_fract *fract)
+void		ft_random(t_env *env, t_fract *fract)
 {
 	t_poss poss;
 
@@ -42,8 +42,10 @@ void	ft_random(t_env *env, t_fract *fract)
 		{
 			fract->cr = -1.5;
 			fract->ci = 0;
-			fract->zr = 1.5 * (poss.y + env->zoomy - WIDTH * 0.5) / (env->zoom * WIDTH * 0.5) + env->move_h;
-			fract->zi = (poss.x + env->zoomx - HEIGHT * 0.5) / (env->zoom * HEIGHT * 0.5) + env->move_v;
+			fract->zr = 1.5 * (poss.y + env->zoomy - WIDTH * 0.5) /
+				(env->zoom * WIDTH * 0.5) + env->move_h;
+			fract->zi = (poss.x + env->zoomx - HEIGHT * 0.5) /
+				(env->zoom * HEIGHT * 0.5) + env->move_v;
 			random_loop(fract, env, poss);
 		}
 	}

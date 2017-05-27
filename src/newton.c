@@ -6,18 +6,13 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 23:25:07 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/26 00:53:32 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/26 19:23:01 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
-/*
-			fract->cr = -0.9;
-			fract->ci = 0.27010;
 
-*/
-
-void	newton_loop(t_fract *fract, t_env *env, t_poss poss)
+static void	newton_loop(t_fract *fract, t_env *env, t_poss poss)
 {
 	double tmp;
 
@@ -35,7 +30,7 @@ void	newton_loop(t_fract *fract, t_env *env, t_poss poss)
 		DATA[poss.x * WIDTH + poss.y] = 0x151515;
 }
 
-void	ft_newton(t_env *env, t_fract *fract)
+void		ft_newton(t_env *env, t_fract *fract)
 {
 	t_poss poss;
 
@@ -45,10 +40,12 @@ void	ft_newton(t_env *env, t_fract *fract)
 		poss.y = -1;
 		while (++poss.y < WIDTH)
 		{
-			fract->cr = -0.9 + env->real;
-			fract->ci = 0.27010 + env->ireal;
-			fract->zr = 1.5 * (poss.y + env->zoomy - WIDTH * 0.5) / (env->zoom * WIDTH * 0.5) + env->move_h;
-			fract->zi = (poss.x + env->zoomx - HEIGHT * 0.5) / (env->zoom * HEIGHT * 0.5) + env->move_v;
+			fract->cr = -0.9;
+			fract->ci = 0.27010;
+			fract->zr = 1.5 * (poss.y + env->zoomy - WIDTH * 0.5) /
+				(env->zoom * WIDTH * 0.5) + env->move_h;
+			fract->zi = (poss.x + env->zoomx - HEIGHT * 0.5) /
+				(env->zoom * HEIGHT * 0.5) + env->move_v;
 			newton_loop(fract, env, poss);
 		}
 	}
