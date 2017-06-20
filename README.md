@@ -1,8 +1,8 @@
 # Infinite-V
-## I allow you to visualize the infinity. Cool right?  
+### This project allows you visualize the infinity! Sounds cool?
 
-With this project I wanted to work on the mathematical coplexity and awsomness of fractals. 
-The program offers the possibility to represent several known fractals. I have also created an UI interface to be able to play arround change coolors and to some other nice stuffs! 
+With this project I worked on the mathematical coplexity and awsomness of fractals. 
+The program offers the possibility to represent several known fractals. I have also created an UI interface to be able to play arround change colors, deepth and move arround with the keyboard or the mouse! 
 
 
 ### Some exapmles of the Frctals: 
